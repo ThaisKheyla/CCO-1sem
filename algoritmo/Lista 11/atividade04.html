@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números pares de 0 a 100</title>
+</head>
+<body>
+    <button onclick="operacao()">S2 Pares</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function operacao(){
+            
+            resultado.innerHTML = '';
+            for (var i = 0; i <= 100; i += 2){
+                resultado.innerHTML += `<br>${i}`;
+            }     
+    }
+    </script>
+</html>
