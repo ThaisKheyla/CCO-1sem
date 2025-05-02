@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem de Pares e Ímpares</title>
+</head>
+<body>
+    <!--
+    15. Crie um programa o qual:  
+    a) Tenha no topo da página, o seguinte texto:  
+
+    Números pares: 0  
+
+    Números ímpares: 0  
+
+    b) Ao clicar no botão "Sortear número", deve sortear um número entre -30 e -9 e exibir o número sorteado abaixo do botão 
+
+    c) Aumente um dos contadores do item a) conforme ele seja par ou ímpar 
+
+    OBS: o contador deve ser cumulativo, ou seja 
+    -->
+    <button onclick="sortearNumero()">Sortear número</button>
+    <div id="telaNumeros" style="margin-top: 20px;"></div>
+</body>
+    <script>
+        var pares = 0;
+        var impares = 0;
+
+        function sortearNumero() {
+            var numero = Math.floor(Math.random() * 53) - 30
+            var texto = `Número sorteado: ${numero}<br>`
+
+            if (numero % 2 === 0) {
+                pares++
+            } else {
+                impares++
+            }
+
+            texto += `Números pares: ${pares}<br>Números ímpares: ${impares}`;
+
+            telaNumeros.innerHTML = texto;
+        }
+    </script>
+</html>
