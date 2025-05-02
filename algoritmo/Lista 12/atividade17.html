@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio</title>
+</head>
+<body>
+    <!--
+    17. Melhore o programa anterior
+    Permita que o usuário escolha até 3 números da sorte entre 1 e 100. 
+    Sendo que as mensagens ficarão: “Parabéns, 
+    YYYYYY o seu número da sorte 99 foi sorteado após X sorteios!”. 
+    -->
+    <label for="ipt_nome">Insira seu nome:</label>
+    <input type="text" id="ipt_nome">
+    <br><br>
+
+    <label for="ipt_numeroSorte1">Insira seu número da sorte (1 até 100):</label>
+    <input type="text" id="ipt_numeroSorte1">
+    <br><br>
+
+    <label for="ipt_numeroSorte2">Insira seu número da sorte (1 até 100):</label>
+    <input type="text" id="ipt_numeroSorte2">
+    <br><br>
+
+    <label for="ipt_numeroSorte3">Insira seu número da sorte (1 até 100):</label>
+    <input type="text" id="ipt_numeroSorte3">
+    <br><br>
+
+    <button onclick="sortear()">Sortear!</button>
+
+    <div id="div_sortear" style="margin-top: 20px;"></div>
+
+    <script>
+        function sortear() {
+            var nome = ipt_nome.value;
+            var numeroSorte1 = ipt_numeroSorte1.value * 1;
+            var numeroSorte2 = ipt_numeroSorte2.value * 1;
+            var numeroSorte3 = ipt_numeroSorte3.value * 1;
+
+            var numeroSorteado = Math.floor(Math.random() * 100) + 1;
+
+            if (numeroSorte1 < 1 || numeroSorte1 > 100 || numeroSorte2 < 1 || numeroSorte2 > 100 || numeroSorte3 < 1 || numeroSorte3 > 100) {
+                alert("Número inválido! Só são permitidos números entre 1 e 100.");
+            } else if (numeroSorteado === numeroSorte1 || numeroSorteado === numeroSorte2 || numeroSorteado === numeroSorte3) {
+                div_sortear.innerHTML = `
+                    <p>Número sorteado: ${numeroSorteado}</p>
+                    <p>🎉 Parabéns, ${nome}, você foi sorteado(a)!</p>`;
+            } else {
+                div_sortear.innerHTML = `
+                    <p>Número sorteado: ${numeroSorteado}</p>
+                    <p>😢 Que pena, ${nome}, você ainda não foi sorteado(a).</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
