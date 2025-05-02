@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 14</title>
+</head>
+<body>
+    <!--
+    14. Crie um programa o qual:  
+    a) Tenha um campo "Digite um número qualquer";  
+    b) Tenha um botão "Analisar histórico" que ao ser clicado, o número é cadastrado em algum lugar e, 
+    em seguida, deve aparecer um histórico dos números cadastrados, bem como o maior e o menor, como no exemplo a seguir:  
+
+   1º Número: 15  
+   2º Número: 22  
+   3º Número: 19  
+   4º Número: 5  
+
+   Maior: 22  
+   Menor: 5  
+    -->
+    <h1>Cadastro de Números</h1>
+    <p>Digite um número qualquer:</p>
+    <input type="text" id="numero_inp" placeholder="Digite um número">
+    <button onclick="adicionarNumero()">Cadastrar número</button>
+    <br>
+    <br>
+    <div id="exibir"></div>
+    <br>
+    <br>
+    <button onclick="verHistorico()">Analisar histórico</button>
+    <div id="historico"></div>
+</body>
+<script>
+    var lista = [];
+
+    function adicionarNumero() {
+        var numero = Number(numero_inp.value); 
+        lista.push(numero); 
+
+        exibir.innerHTML = `Número ${numero} cadastrado com sucesso!`;
+        numero_inp.value = "";
+    }
+
+    function verHistorico() {
+        var texto = "";
+        for (var i = 0; i < lista.length; i++) {
+            texto += `${i + 1}º Número: ${lista[i]}<br>`;
+        }
+
+        var maior = Math.max(...lista);
+        var menor = Math.min(...lista);
+
+        texto += `<br>Maior: ${maior}<br>Menor: ${menor}`;
+        historico.innerHTML = texto;
+    }
+</script>
+
+</html>
