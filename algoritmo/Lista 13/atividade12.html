@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 12</title>
+</head>
+<body>
+    <!--
+    12. Crie um programa o qual:  
+    a) Pergunte ao usuário o nome de um de seus filhos; 
+    b) Ao clicar em "Cadastrar", o nome do filho fica cadastrado num lugar que o usuário não vê,
+     porém não permita o cadastro de nomes repetidos.  
+    b.1) Em caso de tentativa de nome repetido, exiba um alert com a frase "Não pode mais de 1 filho com o mesmo nome!"  
+    c) Ao clicar em "Atualizar Família", deve aparecer um texto como este abaixo:  
+
+        Você tem X filhos  
+        Seu custo mensal será aproximadamente R$Y se colocá-los em escola particular ou R$Z se eles 
+        estudarem em escola pública  
+        Em que X é a quantidade de filhos cadastrados.  
+        Y é o resultado do seguinte cálculo: filhos x 3000 
+        Z é o resultado do seguinte cálculo: filhos x 1500 
+    -->
+    <h1>Informações sobre os filhos</h1>
+    <p>Insira o nome de um de seus filhos: </p>
+    <input type="text" id="inp_filhos" placeholder="Coloque o nome aqui">
+    <br>
+    <br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="exibir"></div>
+</body>
+    <script>
+        lista = [];
+        function cadastrar() {
+            var nome = inp_filhos.value;
+            if (lista.includes(nome)) {
+                alert("Não pode mais de 1 filho com o mesmo nome!");
+            } else {
+                lista.push(nome);
+                exibir.innerHTML = `Filho ${nome} cadastrado com sucesso!`;
+            }
+        }
+        function atualizarFamilia() {
+            var filhos = lista.length;
+            var custoParticular = filhos * 3000;
+            var custoPublica = filhos * 1500;
+            exibir.innerHTML = `Você tem ${filhos} filhos.<br>`;
+            exibir.innerHTML += `Seu custo mensal será aproximadamente R$${custoParticular} se colocá-los em escola particular
+            ou R$${custoPublica} se eles estudarem em escola
+            pública.`;
+        }
+    </script>
+</html>
