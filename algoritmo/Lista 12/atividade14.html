@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase da Lua</title>
+</head>
+<body>
+    <!--
+    14. Crie um programa que simule as fases da lua:  
+    a) Ao clicar no botão "Ver a Lua", sorteie um dia do mês entre 1 e 31 e exiba o número sorteado na página  
+    b) Mostre uma fase da lua, de acordo com o dia sorteado, conforme estes critérios (pode baixar e deixar as imagens locais, se preferir):  
+
+   "Lua nova", caso o dia do mês esteja entre 1 e 7  
+   "Lua cheia", caso o dia do mês esteja entre 8 e 16  
+   "Lua minguante", caso o dia do mês esteja entre 17 e 22  
+   "Lua crescente", caso o dia do mês esteja entre 23 e 31 
+    -->
+    <button onclick="verLua()">Ver a Lua</button>
+    <div id="telaLua" style="margin-top: 20px;"></div>
+</body>
+    <script>
+
+        function verLua() {
+            var dia = Math.floor(Math.random() * 31) + 1;
+            var fase = "";
+            var imagem = "";
+
+            if (dia <= 7) {
+                fase = "Lua nova 🌑";
+                imagem = "https://media.istockphoto.com/id/1454962321/pt/foto/new-moon-in-a-black-sky-in-detail.jpg?s=612x612&w=0&k=20&c=CmAVtW_IYRCAAY4hmOh6N6zEkOC8YrF9nSAPoffEsSc=";
+            } else if (dia <= 16) {
+                fase = "Lua cheia 🌕";
+                imagem = "https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/02/Lua-cheia-na-india.jpg";
+            } else if (dia <= 22) {
+                fase = "Lua minguante 🌘";
+                imagem = "https://i.pinimg.com/736x/9f/59/b1/9f59b18a7884949b32241f3fc6d3d000.jpg";
+            } else {
+                fase = "Lua crescente 🌒";
+                imagem = "https://media.istockphoto.com/id/1169251201/pt/foto/waxing-crescent-moon-as-seeing-from-the-southern-hemisphere-amazing-the-moon-rough-surface.jpg?s=612x612&w=0&k=20&c=iME_VGS2DDWV6SXCBIlhlvzdJBXSS87ai9NSp1uTNeU=";
+            }
+
+            telaLua.innerHTML = `
+                <p>Dia do mês sorteado: ${dia}</p>
+                <p>${fase}</p>
+                <img src="${imagem}" alt="${fase}" height="200px">
+            `;
+        }
+    </script>
+</html>
