@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de Viagens</h1>
+    <p>Digite o nome do destino que deseja cadastrar:</p>
+    <input type="text" id="destino" placeholder="Ex: São Paulo">
+    <button onclick="adicionar()">Adicionar</button> <br>
+    <button onclick="primeira_viagem()">primeira Viagem</button>
+    <br>
+    <br>
+    <button onclick="terceira_viagem()">terceira Viagem</button>
+    <br>
+    <br>
+    <button onclick="ultima_viagem()">ultima Viagem</button>
+    <div id="exibir"></div>
+
+
+</body>
+<script>
+    var destinos = []
+
+    function adicionar(){
+        exibir.innerHTML=``
+        var destinoNovo = destino.value
+        destinos.push(destinoNovo);
+        exibir.innerHTML+= `Destino adicionado`
+    }
+
+    function primeira_viagem(){
+        exibir.innerHTML=``
+        if(destinos.length==0){
+            exibir.innerHTML+=`Ainda não viajou`
+        
+        }
+        else{
+        var primeiroDestino= destinos[0]
+        exibir.innerHTML+=`Primeira viagem ${primeiroDestino}`
+        }
+
+    }
+
+
+    function terceira_viagem(){
+         exibir.innerHTML=``
+        if(destinos.length<2){
+            exibir.innerHTML+=`Ainda não viajou`
+        }
+        else{
+        var terceiroDestino= destinos[2]
+        exibir.innerHTML+=`Terceira viagem ${terceiroDestino}`
+        }
+    
+    }
+
+    function ultima_viagem(){
+        exibir.innerHTML=``
+        if(destinos.length==0){
+            exibir.innerHTML+=`Ainda não viajou`
+        }else{
+        var ultima_viagemDestino=destinos[destinos.length-1]
+        exibir.innerHTML+=`Ultima viagem ${ultima_viagemDestino}`
+
+        }
+    }
+
+</script>
+</html>
