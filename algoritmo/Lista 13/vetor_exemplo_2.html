@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilizando vetores</title>
+</head>
+<body>
+    <input type="text" id="fruta_digitada">
+    <button onclick="adicionar()">Adicionar</button>
+    <br>
+    <br>
+    <button onclick="verFrutas()">Ver frutas</button>
+    <div id="frase"></div>
+</body>
+<script>
+    //vetor com apenas 5 frutas
+    var frutas = ['Maça', 'Uva', 'Melão', 'abacate', 'Morango'];
+
+    //função de adicionar +1 fruta
+    function adicionar(){
+        var frutaNova = fruta_digitada.value;
+        frutas.push(frutaNova);
+        alert('Fruta adicionada com sucesso!!')
+
+    }
+
+    function verFrutas (){
+        var fraseFinal = ''
+
+        //informações das frutas (quantidade)
+        
+        fraseFinal +=`Quantidade de frutas: ${quantidadeFrutas}<br>`
+
+        //Primeira fruta
+        var primeiraFruta = frutas[0];
+        fraseFinal += `Primeira fruta: ${primeiraFruta}<br>`
+        
+        //Ultima fruta inserida no vetor
+        var quantidadeFrutas = frutas.length;
+        var ultimaFruta = frutas[quantidadeFrutas - 1]
+        fraseFinal += `Ultima fruta: ${ultimaFruta}<br>`
+        frase.innerHTML = fraseFinal;
+
+    }
+
+</script>
+</html>
