@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 05</title>
+</head>
+<body>
+    <!--
+    5. Crie um programa o qual: 
+    a) Usuário cadastre os nomes de seus filmes favoritos e adiciona cada um ao clicar em "Cadastrar Filme";
+    b) Na medida em que vai cadastrando, deve ser exibido ou atualizado um "painel" como neste exemplo: 
+
+  Seu filme favorito: Donnie Darko
+  Seu 3º filme favorito: A era do gelo 1 
+  Total de filmes cadastrados: 5 
+
+    Obs: no "3º filme", caso não tenham sido cadastrados ainda 3 filmes, exibir "Ainda não existe". 
+    Obs: o "Filme favorito" é o primeiro cadastrado.
+    -->
+    <h1>Cadastro de Filmes Favoritos</h1>
+    <p>Digite o nome do filme que deseja cadastrar:</p>
+    <input type="text" id="filme" placeholder="Digite o nome do filme">
+    <button onclick="adicionarFilme()">Cadastrar filme</button>
+    <br>
+    <br>
+    <button onclick="verFavoritos()">Ver Favoritos</button>
+    <br>
+    <br>
+    <div id="exibir"></div>
+
+</body>
+    <script>
+        var listaFilmes = [];
+        function adicionarFilme (){
+            var nomeFilme = filme.value;
+            listaFilmes.push(nomeFilme);
+            exibir.innerHTML = `Filme ${nomeFilme} cadastrado com sucesso!`;
+
+        }
+
+        
+        function verFavoritos() {
+            exibir.innerHTML = ``;
+            if (listaFilmes.length === 0) {
+                exibir.innerHTML = "Nenhum filme cadastrado ainda.";
+            }
+            if (listaFilmes.length < 3) {
+                exibir.innerHTML = `Seu filme favorito: ${listaFilmes[0]}<br>`;
+                exibir.innerHTML += `Seu 3º filme favorito: Ainda não existe<br>`;
+                exibir.innerHTML += `Total de filmes cadastrados: ${listaFilmes.length}<br>`;
+            }else{
+                
+            exibir.innerHTML = `Seu filme favorito: ${listaFilmes[0]}<br>`;
+            exibir.innerHTML += `Seu 3º filme favorito: ${listaFilmes[2]}<br>`;
+            exibir.innerHTML += `Total de filmes cadastrados: ${listaFilmes.length}<br>`;
+            }
+        }
+    </script>
+</html>
