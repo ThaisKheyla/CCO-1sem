@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números cabalísticos</title>
+</head>
+<body>
+    <button onclick="operacao()">Números cabalísticos</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function operacao(){
+            
+        resultado.innerHTML = '';
+
+        for (var i = 0; i < 31; i++) {
+            if (i !== 3 && i !== 4 && i !== 7 && i !== 10 && i !== 12) {
+                resultado.innerHTML += `<br>${i}`;
+            }
+            
+        }
+    }
+        
+
+    </script>
+</html>
