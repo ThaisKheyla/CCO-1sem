@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Dados</title>
+</head>
+<body>
+    <!--
+    18. Crie um programa que simule um jogo de dados, o qual:  
+    a) Tenha o seguinte texto:  
+
+    Jogador 1: 0  
+    Jogador 2: 0  
+    Empate: 0  
+
+    b) Ao clicar no botão “Jogar”, sorteie um valor de 1 a 6 para o Jogador 1 e outro valor para o Jogador 2 e some 1 no placar do item a) de acordo com o resultado.  
+    c) Após atualizar o placar, emita a mensagem "O jogador X está vencendo!", onde X é o jogador que está vencendo. Caso o jogo esteja empatado, a mensagem será "O jogo está empatado!" 
+        
+    -->
+    <p id="infoPlacar">Jogador 1: 0<br>Jogador 2: 0<br>Empate: 0</p>
+    <button onclick="jogarDados()">Jogar</button>
+    <div id="infoResultado" style="margin-top: 10px;"></div>
+    <div id="infoMensagem" style="margin-top: 10px;"></div>
+</body>
+    <script>
+        var j1 = 0, j2 = 0, emp = 0;
+
+        function jogarDados() {
+            var dado1 = Math.floor(Math.random() * 6) + 1;
+            var dado2 = Math.floor(Math.random() * 6) + 1;
+
+            infoResultado.innerHTML = 
+                `Jogador 1 tirou: ${dado1}<br>Jogador 2 tirou: ${dado2}`
+
+            if (dado1 > dado2) {
+                j1++;
+                infoMensagem.innerHTML = "O jogador 1 está vencendo!"
+            } else if (dado2 > dado1) {
+                j2++;
+                infoMensagem.innerHTML = "O jogador 2 está vencendo!"
+            } else {
+                emp++;
+                infoMensagem.innerHTML = "O jogo está empatado!"
+            }
+
+            infoPlacar.innerHTML = 
+                `Jogador 1: ${j1}<br>Jogador 2: ${j2}<br>Empate: ${emp}`
+        }
+    </script>
+</html>
