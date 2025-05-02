@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva o 7!!</title>
+</head>
+<body>
+    <label for="inp_numero">Insira um numero de 0 a 200</label>
+    <input type="number" min="0" max="200" id="inp_numero">
+    <br>
+    <button onclick="analisar()">Viva o 7</button>
+    <div id="resultado"></div>
+</body>
+    <script>
+        function analisar(){
+            var i = Number(inp_numero.value);
+            resultado.innerHTML = ``;
+
+            for (var i; i <= 200; i++) { 
+                if (i % 7 === 0) {
+                    resultado.innerHTML += `<br>${i}`;
+                }
+            }
+        }
+    </script>
+</html>
