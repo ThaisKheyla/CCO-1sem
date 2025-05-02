@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio</title>
+</head>
+<body>
+    <!--
+    16. Crie um programa o qual:  
+    a) Solicite ao usuário que digite seu nome e seu número inteiro da sorte. Esse número deve ser entre 1 e 10. 
+    b) Ao clicar no botão "Sortear", valide se o usuário digitou entre 1 e 10. Caso não, exiba um alert orientando sobre o erro. Caso contrário, faça um sorteio de números inteiros entre 1 e 10.   
+    c) Caso o número sorteado em b) seja o número da sorte informado em a), exiba um texto em qualquer lugar da página dizendo "Parabéns, YYYYYYY você foi sorteado(a) após X sorteios!", onde X é a quantidade de sorteios realizados e YYYYYYY é o nome do usuário 
+
+ 
+    -->
+    <p>Digite seu nome: </p>
+    <input type="text" id="inputNome">
+    <br>
+    <p>Digite seu número da sorte (1 a 10): </p>
+    <input type="number" id="inputNumero" min="1" max="10">
+    <button onclick="sortear()">Sortear</button>
+    
+    <div id="telaSorteio" style="margin-top: 20px;"></div>
+</body>
+    <script>
+        function sortear() {
+            var nome = inputNome.value;
+            var numero = inputNumero.value * 1;
+
+            if (numero < 1 || numero > 10) {
+                telaSorteio.innerHTML = "<p style='color:red;'>Digite um número entre 1 e 10!</p>";
+                return;
+            }
+
+            var sorteios = 0;
+            var sorteado = 0;
+
+            while (sorteado != numero) {
+                sorteado = Math.floor(Math.random() * 10) + 1;
+                sorteios++;
+            }
+
+            telaSorteio.innerHTML = `<p>Parabéns, ${nome}! 🎉</p>
+                                      <p>Seu número ${numero} foi sorteado após ${sorteios} tentativa(s)!</p>`;
+        }
+    </script>
+</html>
