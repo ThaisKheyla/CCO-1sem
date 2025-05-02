@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        .azul { color: blue; }
+        .vermelho { color: red; }
+    </style>
+</head>
+<body>
+    <label>Tabuada de:</label>
+    <input type="number" id="inp_tabuada" min="2" max="9">
+    <br>
+    <label>Até qual número?</label>
+    <input type="number" id="inp_limite">
+    <br>
+    <button onclick="verTabuada()">Ver Tabuada</button>
+    <div id="resultado"></div>
+    
+    <script>
+        function verTabuada(){
+            var tabuada = Number(inp_tabuada.value);
+            var limite = Number(inp_limite.value);
+            resultado.innerHTML = "";
+            
+            for (var i = 1; i <= limite; i++) {
+                var classe = (i % 2 === 0) ? "azul" : "vermelho";
+                resultado.innerHTML += `<p class='${classe}'>${tabuada} x ${i} = ${tabuada * i}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
