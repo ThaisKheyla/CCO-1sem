@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 01</title>
+</head>
+<body>
+
+    <input type="text" id="inp_fruta">
+    <br>
+    <br>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_fruta"></div>
+
+    <!--
+    1. Crie um programa o qual: 
+    a) Tenha uma lista de frutas a qual o usuário não vê;
+    b) Tenha na tela um campo em que o usuário digita o nome de uma fruta e um botão "Pesquisar";
+    c) Ao clicar em "Pesquisar", o programa busca a fruta digitada, na lista.
+        c.1) Se achar, exibe um texto abaixo com a frase:
+
+    A fruta X existe na lista.
+
+        c.2) Caso a fruta pesquisada não exista, exiba: 
+    Não existe a fruta X na lista.
+        OBS: para criar uma lista que já se inicia com valores, utilize
+        var nomes = ['JP', 'Braian', 'Brandão']; 
+    -->
+
+</body>
+    <script>
+        function pesquisar(){
+            var frutaDigitada = inp_fruta.value;
+            var frutas = ['Maça', 'Uva', 'Melão', 'abacate', 'Melancia'];
+
+            for(var i=0; i < frutas.length; i++){
+                
+            if(frutaDigitada == frutas[i]){
+                div_fruta.innerHTML=''
+                console.log('teste')
+                div_fruta.innerHTML = `A fruta  ${frutaDigitada}  existe na lista.<br>`
+                break
+            }
+
+            else{
+                div_fruta.innerHTML = `Não existe a fruta "${frutaDigitada}" na lista.`
+            }
+            }
+        }
+
+
+
+    </script>
+</html>
