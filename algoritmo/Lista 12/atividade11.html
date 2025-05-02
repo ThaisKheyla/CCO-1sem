@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Avaliação de Atendente</title>
+</head>
+<body>
+<!--
+    11. Crie um programa que simule um sistema de avaliação de atendente:  
+    a) Ao clicar no botão "Avaliar". Esse botão vai gerar uma avaliação aleatória entre 0 e 5 (números reais com uma casa decimal)  
+
+    b) Mostra, abaixo, a nota da avaliação. Ex: "Nota recebida: 4.5"  
+
+    c) De acordo com a avaliação aleatória recebida, mostre um emoji, segundo os seguintes critérios (pode baixar e deixar as imagens locais, se preferir):  
+
+    "Muito Triste", caso a nota seja entre 0 e 0.5  
+
+    "Meio Triste", caso a nota seja mais de 0.5 até 1.5  
+
+    "Neutro", caso a nota seja mais de 1.5 até 3.5  
+
+    "Feliz", caso a nota seja mais de 3.5 até 4.5  
+
+    "Muito Feliz", caso a nota seja mais de 4.5      
+-->
+    <button onclick="avaliar()">Avaliar</button>
+    <div id="notaRecebida" style="margin-top: 10px;"></div>
+    <div id="emoji" style="margin-top: 10px;"></div>
+</body>
+    <script>
+        var notaDiv = notaRecebida;
+        var emojiDiv = emoji;
+
+        function avaliar() {
+            var nota = (Math.random() * 5).toFixed(1);
+            notaDiv.innerHTML = `Nota recebida: ${nota}`;
+
+            var imagem = "";
+            var descricao = "";
+
+            if (nota <= 0.5) {
+                imagem = "https://cdn-icons-png.flaticon.com/512/742/742752.png";
+                descricao = "Muito Triste";
+            } else if (nota <= 1.5) {
+                imagem = "https://cdn-icons-png.flaticon.com/512/742/742761.png";
+                descricao = "Meio Triste";
+            } else if (nota <= 3.5) {
+                imagem = "https://cdn-icons-png.flaticon.com/512/742/742774.png";
+                descricao = "Neutro";
+            } else if (nota <= 4.5) {
+                imagem = "https://cdn-icons-png.flaticon.com/512/742/742751.png";
+                descricao = "Feliz";
+            } else {
+                imagem = "https://cdn-icons-png.flaticon.com/512/742/742755.png";
+                descricao = "Muito Feliz";
+            }
+
+            emojiDiv.innerHTML = `<img src="${imagem}" alt="${descricao}" height="80"><br>${descricao}`;
+        }
+    </script>
+</html>
