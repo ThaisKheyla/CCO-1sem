@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Dados</title>
+</head>
+<body>
+    <!--
+        10. Crie um programa que simule um jogo de dados, o qual:  
+        a) Tenha um botão "Dado Jogador 1" que faz aparecer, abaixo dele, o valor de um dadinho de 6 lados sorteado  
+        b) Tenha um botão "Dado Jogador 2" que faz aparecer, abaixo dele, o valor de um dadinho de 6 lados sorteado  
+        c) Tenha um botão "Comparar Resultados", que exibe uma das frases abaixo de tudo:  
+
+        "Jogador [1 ou 2] venceu", caso um deles tenha vencido  
+        "Empate!", em caso dos dados serem iguais     
+    -->
+    <button onclick="jogarDado1()">Dado Jogador 1</button>
+    <div id="resultado1"></div>
+
+    <button onclick="jogarDado2()">Dado Jogador 2</button>
+    <div id="resultado2"></div>
+
+    <button onclick="comparar()">Comparar Resultados</button>
+    <div id="mensagemFinal"></div>
+</body>
+    <script>
+        var dado1 = 0;
+        var dado2 = 0;
+
+        var div1 = resultado1;
+        var div2 = resultado2;
+        var divMensagem = mensagemFinal;
+
+        function jogarDado1() {
+            dado1 = Math.floor(Math.random() * 6) + 1;
+            div1.innerHTML = `Jogador 1 tirou: ${dado1}`;
+        }
+
+        function jogarDado2() {
+            dado2 = Math.floor(Math.random() * 6) + 1; 
+            div2.innerHTML = `Jogador 2 tirou: ${dado2}`;
+        }
+
+        function comparar() {
+            if (dado1 > dado2) {
+                divMensagem.innerHTML = "Jogador 1 venceu!";
+            } else if (dado2 > dado1) {
+                divMensagem.innerHTML = "Jogador 2 venceu!";
+            } else {
+                divMensagem.innerHTML = "Empate!";
+            }
+        }
+    </script>
+</html>
