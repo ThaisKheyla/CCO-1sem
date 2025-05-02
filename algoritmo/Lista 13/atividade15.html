@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 15</title>
+</head>
+<body>
+    <!--
+    15. Crie um pequeno sistema de loja eletrônica o qual:  
+    a) Tenha um campo "Nome do produto" e outro "Preço de compra"; 
+    b) Tenha um botão "Cadastrar". Ao clicar nele, o nome e preço ficam cadastrados em algum lugar,
+     por enquanto invisível ao usuário  
+    c) Tenha um botão "Relatório de estoque". Ao clicar nele, deve aparecer uma listagem dos produtos cadastrados
+     com seu valor para venda, como no exemplo a seguir:  
+
+   Total de produtos: 2  
+
+   Produto 1: Leite de arroz  
+   Preço de compra: R$1.50. Vender por R$1,87  
+   Produto 2: Caixa de chocolates  
+   Preço de compra: R$9.00. Vender por R$11,25  
+   O preço de venda é sempre o valor da compra mais 25%. 
+
+    #FicaDica: De repente você pode precisar de 2 vetores aqui ;) 
+    -->
+    <h1>Cadastro de Produtos</h1>
+    <p>Insira o nome do produto: </p>
+    <input type="text" id="produto" placeholder="Digite o nome do produto">
+    <p>Insira o preço de compra: </p>
+    <input type="text" id="preco" placeholder="Digite o preço de compra">
+    <button onclick="adicionarProduto()">Cadastrar produto</button>
+    <br>
+    <br>
+    <div id="exibir"></div>
+    <br>
+    <br>
+    <button onclick="verProdutos()">Relatório de estoque</button>
+    <div id="exibirProdutos"></div>
+
+</body>
+    <script>
+        function adicionarProduto() {
+            var nomeProduto = produto.value;
+            var precoCompra = Number(preco.value);
+            var precoVenda = precoCompra * 1.25; // 25% a mais
+            
+            exibir.innerHTML = `Produto ${nomeProduto} cadastrado com sucesso!`;
+            produto.value = "";
+            preco.value = "";
+            
+            listaProdutos.push(nomeProduto);
+            listaPrecos.push(precoCompra);
+        }
+        var listaProdutos = [];
+        var listaPrecos = [];
+        function verProdutos() {
+            var texto = `Total de produtos: ${listaProdutos.length}<br><br>`;
+            for (var i = 0; i < listaProdutos.length; i++) {
+                var precoVenda = listaPrecos[i] * 1.25;
+                texto += `Produto ${i + 1}: ${listaProdutos[i]}<br>`;
+                texto += `Preço de compra: R$${listaPrecos[i].toFixed(2)}. Vender por R$${precoVenda.toFixed(2)}<br><br>`;
+            }
+            exibirProdutos.innerHTML = texto;
+        }
+
+    </script>
+</html>
