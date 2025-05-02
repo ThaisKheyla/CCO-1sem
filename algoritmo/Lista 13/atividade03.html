@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 03</title>
+</head>
+
+<body>
+    <!--
+    a) O usuário vá cadastrando os bairros onde morou; Ele digitará o nome do lugar em um campo e clicará em 
+    "Cadastrar bairro". 
+    b) Deve haver um outro campo, em que digita apenas um número, indicando o local onde morou, a partir do
+     número 1 (porque os usuários comuns contam as coisas assim).
+    c) Após clicar em "Relembrar moradia", faça: 
+
+        c.1) Se ele informar "1", exiba o primeiro bairro cadastrado; Se informar "2", exiba o segundo bairro
+         cadastrado e assim por diante ... 
+        c.2) Porém, ao informar um número maior do que a quantidade de bairros cadastrados, exiba: 
+            "Você ainda não morou num Xº bairro!" 
+    -->
+    <h1>Cadastro de Bairros</h1>
+    <p>Digite o nome do bairro que deseja cadastrar:</p>
+    <input type="text" id="bairro" placeholder="Digite o nome do bairro">
+    <button onclick="adicionarBairro()">Cadastrar bairro</button>
+    <br>
+    <br>
+    <h2>Relembrar Moradia</h2>
+    <p>Digite o número do bairro que deseja relembrar:</p>
+    <input type="number" id="numeroBairro" placeholder="Digite o número do bairro">
+    <button onclick="relembrarMoradia()">Relembrar moradia</button>
+    <br>
+    <br>
+    <div id="resultado"></div>
+
+</body>
+<script>
+    listaBairros = []
+    function adicionarBairro() {
+        resultado.innerHTML = ``
+        var bairroNovo = bairro.value;
+        listaBairros.push(bairroNovo);
+        resultado.innerHTML += `Bairro ${bairroNovo}cadastrado com sucesso!<br>`;
+        console.log(listaBairros)
+    }
+
+    function relembrarMoradia(){
+    resultado.innerHTML = ``;
+    var numero = numeroBairro.value - 1;
+    if (numero < 0 || numero >= listaBairros.length) {
+        resultado.innerHTML += `Você ainda não morou num ${numero + 1}º bairro!`;
+    } else {
+        
+        var bairroRelembrado = listaBairros[numero];
+        resultado.innerHTML += `Você morou no bairro ${bairroRelembrado}!`;
+    }
+
+
+}
+
+
+</script>
+
+</html>
