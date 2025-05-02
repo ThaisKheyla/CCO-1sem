@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilizando vetores</title>
+</head>
+<body>
+    <input type="text" id="fruta_digitada">
+    <button onclick="adicionar()">Adicionar</button>
+    <br>
+    <br>
+    <button onclick="verFrutas()">Ver frutas</button>
+    <div id="frase"></div>
+</body>
+<script>
+    //vetor 
+    var frutas = ['Maça', 'Uva', 'Melão', 'abacate', 'Morango'];
+
+    //Modo gambiarra...
+    // var fruta01 = 'Maça';
+    // var fruta02 = 'Uva';
+
+    function adicionar (){
+        var frutaNova = fruta_digitada.value;
+        //esse push serve para adicionar um ou mais elementos ao final de um array
+        frutas.push(frutaNova);
+        alert('Fruta adicionada com sucesso!!')
+    }
+
+    function verFrutas (){
+        frase.innerHTML = frutas;
+    }
+
+
+
+</script>
+</html>
