@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortear um time :D</title>
+</head>
+<body>
+    <!--
+    2. Crie um programa o qual:  
+    a) Ao clicar no botão "Sortear time", faz aparecer somente um dos escudos dos 4 times de futebol 
+    de maior torcida do estado de São Paulo. Independente da imagem, todas devem ter 150px de altura.
+    -->
+
+    <label>Clique aqui para sortear o time</label>
+    <br>
+    <button onclick="sortear()">Sortear time</button>
+
+    <div id="resultadoTime"></div>
+    
+</body>
+<script>
+    function sortear() {
+        var numero = Math.floor(Math.random() * 4) + 1; 
+
+        console.log(`${numero}`)
+        
+        if (numero === 1) {
+            resultadoTime.innerHTML = `<img src="https://artpoin.com/wp-content/uploads/2023/09/artpoin-corinthians-futebol8.png" height="150">`;
+        } else if (numero === 2) {
+            resultadoTime.innerHTML = `<img src="https://artpoin.com/wp-content/uploads/2023/12/artpoin-palmeiras14.png" height="150">`;
+        } else if (numero === 3) {
+            resultadoTime.innerHTML = `<img src="https://media.sketchfab.com/models/0cb7bda85eff47758532e7108572e863/thumbnails/277799e3879d4f11adbec37b074a0765/5ab1edeab0304d23bfafad0fb2ee7ece.jpeg" height="150">`;
+        } else {
+            resultadoTime.innerHTML = `<img src="https://media.santosfc.com.br/wp-content/uploads/2022/04/Asset-2.jpg" height="150">`;
+        }
+    }
+</script>
+</html>
