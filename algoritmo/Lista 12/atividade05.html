@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Jo Ken Po</title>
+</head>
+<body>
+<!--
+    5. Simulação
+    Tente fazer uma pequena simulação do famoso jogo "jo ken po" (pedra, papel e tesoura) em HTML/JS:  
+    a) Ao clicar no botão "Jogar", deve aparecer abaixo dele ou a figura de uma pedra, de uma folha 
+    de papel ou de uma tesoura (seja qual for a imagem, ela deve ter 200px de altura). 
+    b) Abaixo das imagens, exiba quem venceu e exiba/atualize o placar de vitórias como abaixo: 
+
+     O jogador 1 venceu!  
+
+     Jogador 1: 1 vitória(s) 
+
+     Jogador 2: 0 vitória(s)     
+-->
+    <button onclick="jogar()">Jogar</button>
+
+    <div id="tela" style="margin-top: 20px;"></div>
+</body>
+
+
+
+
+    <script>
+        var vitorias1 = 0;
+        var vitorias2 = 0;
+        function jogar() {
+            var opcoes = ['pedra', 'papel', 'tesoura'];
+            var imagens = {
+                'pedra': 'https://img.freepik.com/psd-gratuitas/belas-pedras-no-estudio_23-2151860813.jpg',
+                'papel': 'https://images.tcdn.com.br/img/img_prod/1041864/500_folhas_papel_foto_glossy_brilhante_a4_115g_359399_1_f27f374550ddb6730fb770b04ff81856.jpg',
+                'tesoura': 'https://static.lojabrafer.com.br/public/brafer/imagens/produtos/tesoura-para-costura-inox-8-pol-cabo-confortavel-tramontina-65976.jpg'
+            };
+
+            var escolha1 = opcoes[Math.floor(Math.random() * 3)];
+            var escolha2 = opcoes[Math.floor(Math.random() * 3)];
+
+            var texto = '';
+            if (escolha1 === escolha2) {
+                texto = 'Empate!';
+            } else if (
+                (escolha1 === 'pedra' && escolha2 === 'tesoura') ||
+                (escolha1 === 'tesoura' && escolha2 === 'papel') ||
+                (escolha1 === 'papel' && escolha2 === 'pedra')
+            ) {
+                vitorias1++;
+                texto = 'O jogador 1 venceu!';
+            } else {
+                vitorias2++;
+                texto = 'O jogador 2 venceu!';
+            }
+
+            tela.innerHTML =
+                'Jogador 1: <img src="' + imagens[escolha1] + '" height="200px"> ' +
+                'Jogador 2: <img src="' + imagens[escolha2] + '" height="200px"><br>' +
+                '<p>' + texto + '</p>' +
+                '<p>Jogador 1: ' + vitorias1 + ' vitória(s)<br>' +
+                'Jogador 2: ' + vitorias2 + ' vitória(s)</p>';
+        }
+    </script>
+
+</html>
