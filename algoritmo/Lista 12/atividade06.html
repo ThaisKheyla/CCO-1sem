@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Momento do Dia</title>
+</head>
+<body>
+    <!--
+     
+    6. Crie um programa o qual:  
+    a) Ao clicar no botão "Sortear momento do dia". Esse botão vai gerar 
+    uma hora aleatória entre 0 e 23 (apenas números inteiros).  
+    b) Em seguida, mostre na tela uma dessas frases:  
+
+     "Bom dia, flor do dia, são Xh!" (caso o horário for entre 0 e 11)  
+
+     "Boa tarde, já vai tarde! São Xh!" (caso o horário for entre 12 e 17)  
+
+     "Boa noite, durma bem! São Xh!" (caso o horário for entre 18 e 23) 
+
+    Onde X é um número inteiro sorteado, sem casas decimais
+    -->
+    <button onclick="sortear()">Sortear momento do dia</button>
+    <p id="mensagem"></p>
+</body>
+<script>
+
+    function sortear() {
+        var hora = Math.floor(Math.random() * 24)
+        texto = ""
+
+        if (hora >= 0 && hora <= 11) {
+            texto = "Bom dia, flor do dia, são " + hora + "h!"
+        } else if (hora >= 12 && hora <= 17) {
+            texto = "Boa tarde, já vai tarde! São " + hora + "h!"
+        } else {
+            texto = "Boa noite, durma bem! São " + hora + "h!"
+        }
+        mensagem.innerHTML = texto;
+    }
+</script>
+</html>
