@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 10</title>
+</head>
+
+<body>
+    <!--
+    10. Crie um programa o qual:
+
+    a) O usuário vá registrando os nomes das linhas de ônibus que ele pegou durante a semana.
+     Ele digita o nome da linha e clica em "Gravar busão"; 
+    b) Cada vez que o botão é clicado o programa deve mostrar a lista de linhas de ônibus abaixo do botão e em ordem inversa 
+    (do último para o primeiro);  
+    c) Deve haver outro campo em que ele pesquisa por uma linha que já tenha pego. Ao clicar em "Pesquisar",
+     deve ver uma dessas frases, abaixo da lista de linhas de ônibus que já pegou:  
+
+        Você nunca pegou essa linha (caso não tenha cadastrado a linha em questão)  
+        OU  
+        Você já pegou essa linha 4 vezes, nessa ordem: 2, 4, 8, 9  
+        (supondo que ele cadastrou a mesma linha na 2ª vez, na 4ª vez, na 8ª vez e na 9ª vez).
+    -->
+    
+    <h1>Cadastro de Linhas de Ônibus</h1>
+    <p>Digite o nome da linha de ônibus que deseja cadastrar:</p>
+    <input type="text" id="linha_inp" placeholder="Digite o nome da linha">
+    <button onclick="adicionarLinha()">Gravar busão</button>
+    <br>
+    <br>
+    <div id="exibir"></div>
+    <br>
+    <br>
+    <p>Digite o nome da linha de ônibus que deseja pesquisar:</p>
+    <input type="text" id="pesquisa_inp" placeholder="Digite o nome da linha">
+    <button onclick="pesquisarLinha()">Pesquisar</button>
+    <div id="resultado"></div>
+
+</body>
+    <script>
+        var lista = [];
+        function adicionarLinha() {
+            var linha = linha_inp.value;
+            inserirLista = lista.push(linha);
+            exibir.innerHTML = ` ${lista.reverse()}`;
+        }
+        function pesquisarLinha() {
+            var pesquisa = pesquisa_inp.value;
+            var ordem = [];
+
+            for (var i = 0; i < lista.length; i++) {
+                if (lista[i] === pesquisa) {
+                    ordem.push(i + 1);
+                }
+            }
+
+            if (ordem.length > 0) {
+                resultado.innerHTML = `Você já pegou essa linha ${ordem.length} vezes, nessa ordem: ${ordem}`;
+            } else {
+                resultado.innerHTML = "Você nunca pegou essa linha.";
+            }
+        }
+    </script>
+</html>
