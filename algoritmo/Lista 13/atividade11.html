@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 11</title>
+</head>
+<body>
+    <!--
+    11. Crie um programa o qual:  
+    a) Pergunte ao usuário o preço de um produto; 
+    b) Ao clicar em "Cadastrar", o preço fica cadastrado num lugar que o usuário não vê; 
+    c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços cadastrados (em ordem inversa)
+     e um texto como este abaixo:  
+
+   Você tem X produtos cadastrados em estoque  
+   Seu estoque vale R$Y 
+
+    Em que X é a quantidade de produtos cadastrados pelo usuário e Y é a soma de todos os valores. 
+    -->
+    <h1>Cadastro de Preços</h1>
+    <p>Insira o preço do produto: </p>
+    <input type="text" id="preco" placeholder="Digite o preço do produto">
+    <button onclick="adicionarPreco()">Cadastrar preço</button>
+    <br>
+    <br>
+    <div id="exibir"></div>
+    <br>
+    <br>
+    <button onclick="verPrecos()">Atualizar Estoque</button>
+    <div id="exibirPrecos"></div>
+
+    <script>
+        var lista = [];
+
+        function adicionarPreco() {
+            lista.push(preco.value);
+            exibir.innerHTML = "";
+            console.log(lista)
+
+        }
+
+        function verPrecos() {
+            var total = 0;
+            var invertida = lista.slice().reverse();
+            var texto = "";
+
+            for (var i = 0; i < invertida.length; i++) {
+                var valor = Number(invertida[i]);
+                total += valor;
+                texto += `Produto ${i + 1}: R$${valor.toFixed(2)}<br>`;
+                
+            }
+
+            texto += `<br>Você tem ${lista.length} produtos cadastrados em estoque.<br>`;
+            texto += `Seu estoque vale R$${total.toFixed(2)}.`;
+            exibirPrecos.innerHTML = texto;
+        }
+
+
+    </script>
+</body>
+</html>
+
+
