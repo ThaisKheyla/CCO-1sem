@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+</head>
+<body>
+    <!--
+    13. Crie um programa o qual:  
+    a) Ao clicar no botão "Sortear temperatura", sorteia valores reais entre -20 e +20 (intervalo fechado) e exibe uma frase como esta: "Temperatura sorteada: X"  
+    b) Exiba uma dessas mensagens abaixo da temperatura sorteada:  
+
+    "Dá pra conservar qualquer alimento", se a temperatura for menor que 1  
+
+    "Conserva a maioria dos alimentos", se a temperatura for entre 1 e 10  
+
+    "Estraga a maioria dos alimentos", se a temperatura for maior que 10 
+
+    OBS: Exiba as temperaturas como números inteiros, sem casas decimais 
+    -->
+    <button onclick="sortearTemp()">Sortear temperatura</button>
+    <div id="telaTemp" style="margin-top: 20px;"></div>
+</body>
+    <script>
+        function sortearTemp() {
+            var temperatura = Math.floor(Math.random() * 41) - 20;
+            var mensagem = "";
+
+            if (temperatura < 1) {
+                mensagem = "Dá pra conservar qualquer alimento";
+            } else if (temperatura <= 10) {
+                mensagem = "Conserva a maioria dos alimentos";
+            } else {
+                mensagem = "Estraga a maioria dos alimentos";
+            }
+
+            telaTemp.innerHTML = 
+                `<p>Temperatura sorteada: ${temperatura}</p>
+                 <p>${mensagem}</p>`;
+        }
+    </script>
+</html>
