@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 04</title>
+</head>
+<body>
+
+
+    <h1>Cadastro de Filmes Favoritos</h1>
+    <p>Digite o nome do filme que deseja cadastrar:</p>
+    <input type="text" id="filme" placeholder="Digite o nome do filme">
+    <button onclick="adicionarFilme()">Cadastrar filme</button> <br><br>
+
+    <button onclick="verFavoritos()">Ver Favoritos</button> <br><br>
+
+    <div id="exibir"></div>
+
+    
+</body>
+    <script>
+        var listaFilmes = [];
+
+        function adicionarFilme() {
+            var nomeFilme = filme.value;
+            listaFilmes.push(nomeFilme);
+            exibir.innerHTML = `Filme "${nomeFilme}" cadastrado com sucesso!`;
+        }
+        function verFavoritos() {
+            exibir.innerHTML = ``;
+            if (listaFilmes.length === 0) {
+                exibir.innerHTML = "Nenhum filme cadastrado ainda.";
+                
+                
+            }
+
+            exibir.innerHTML = `Filmes favoritos: ${listaFilmes.join(", ")}<br>`;
+            exibir.innerHTML += `Total: ${listaFilmes.length}<br>`;
+            exibir.innerHTML += `O filme que mais gosta é ${listaFilmes[0]}<br>`;
+            exibir.innerHTML += `E desses, o que menos gosta é ${listaFilmes[listaFilmes.length - 1]}<br>`;
+        }
+    </script>
+</html>
