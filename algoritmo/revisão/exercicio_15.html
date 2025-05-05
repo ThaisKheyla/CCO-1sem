@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Nome do produto:</label>
+    <input type="text" id="ipt_nome_produto">
+    <br>
+
+    <label>Preço de compra:</label>
+    <input type="text" id="ipt_preco_compra">
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <br>
+    <button onclick="relatorioEstoque()">Relatório de Estoque</button>
+
+    <div id="div_relatorio"></div>
+
+</body>
+<script>
+    var nomes = []
+    var precos = []
+    function cadastrar(){
+        var nomeDigitado = ipt_nome_produto.value;
+        var precoDigitado = Number(ipt_preco_compra.value)
+
+        nomes.push(nomeDigitado);
+        precos.push(precoDigitado);
+        console.log(nomes)
+        console.log(precos)
+        alert('Cadastrado com sucesso')
+
+    }
+    function relatorioEstoque(){
+        var fraseFinal = `Total de produtos: ${nomes.length}<br>`;
+
+        for(var i = 0; i < nomes.length; i++){
+
+            var precoFinalItem = precos[i] + (precos[i] * 0.25)
+            var precoItem = precos[i];
+
+            fraseFinal += `
+              Produto ${i}: ${nomes[i]}<br>
+              Preço de compra: ${precos[i]} Vender por R${precoFinalItem}
+            `
+        }
+        div_relatorio.innerHTML = fraseFinal;
+
+    }
+</script>
+
+</html>
+

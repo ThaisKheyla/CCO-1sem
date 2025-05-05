@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+</head>
+
+<body>
+    <!-- Tenha um campo para registrar o nome, o código e a quantidade de produto (apenas números) -->
+
+    Insira o nome do produto:
+    <input type="text" id="inp_nomeProduto" placeholder="Ex: Mouse">
+    <br>
+    <br>
+    Insira o código do produto:
+    <input type="text" id="inp_codigo" placeholder="10.00">
+    <br>
+    <br>
+    Insira a quantidade do produto:
+    <input type="text" id="inp_quantidade">
+    <br>
+
+    <!-- Tenha quatro botões: "Cadastrar Produto", "Repor Estoque", "Vender Produto" e "Exibir Relatório" -->
+    <button onclick="cadastrar()">Cadastrar produto</button><br>
+    <button onclick="repor()"> Repor estoque</button><br>
+    <button onclick="vender()">Vender Produto</button><br>
+    <button onclick="exibir()">Exibir Relatório</button><br>
+
+    <div id="resultado"></div>
+</body>
+<script>
+    listaNome = [];
+    listaCodigo = [];
+    listaQuantidade = [];
+
+    var produto = inp_nomeProduto.value;
+    var codigo = Number(inp_codigo.value);
+    var quantidade = Number(inp_quantidade.value);
+
+
+
+    function cadastrar(){
+        // Cadastro de Produto: O sistema deve cadastrar o produto, registrando seu nome, código e quantidade em estoque.
+        // Caso os campos estejam todos preenchidos, a quantidade seja acima do mínimo e o código do produto ainda não exista 
+        // no estoque, exiba "Produto NOME_DO_PRODUTO registrado com sucesso", mas caso contrário, exiba "Preencha todos os 
+        // campos para registrar um novo produto" ou "Código de produto já existente", de acordo com a validação.
+        console.log("p: ", produto)
+        console.log('c: ', codigo)
+        console.log("q: ", quantidade)
+
+        if(produto == "" || codigo == "" || quantidade == ""){
+            alert('Preencha todos os campos')
+        }
+        
+        else{
+            var existe = false;
+
+            for(var i = 0; i < listaCodigo.length; i++){
+                if(listaCodigo[i] == codigo){
+                    achei = true 
+
+                }else if(quantidade >=10){
+                    
+                }
+
+            }
+            if(!existe){
+                listaNome.push(produto)
+                listaCodigo.push(codigo)
+                listaQuantidade.push(quantidade)
+
+            }
+
+        }
+
+        }
+</script>
+
+
+</html>
