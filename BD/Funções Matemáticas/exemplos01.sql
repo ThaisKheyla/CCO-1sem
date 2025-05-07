@@ -14,7 +14,7 @@ primary key(id));
 
 create table produto(
 id int not null auto_increment,
-nome   varchar(100),
+nome varchar(100),
 preco_unitario  decimal(10,2),
 primary key(id)
 );
@@ -203,3 +203,70 @@ group by cli.nome, ped.id
 having vl_medio > 90;
 
 
+-- where com having 
+select 
+    cli.nome as cliente, 
+    ped.id as pedido,
+    SUM(pei.quantidade * pei.valor_unitario) as vl_total,
+    AVG(pei.quantidade * pei.valor_unitario) as vl_medio,
+    COUNT(pei.fkpedido) as qtde
+from cliente cli
+inner join pedido ped on ped.fkcliente = cli.id
+inner join pedido_item pei on pei.fkpedido = ped.id
+where pei.valor_unitario > 60
+group by cliente, pedido
+having vl_medio <90;
+
+-- Selecionar nome do cliente, numero pedido, valor total pedido, valor medido pedido, qtde itens comprados 
+-- calculando somente produtos cujo valor unitario seja maior que a media de valores unitarios de todos os 
+-- produtos com ou sem vendas 
+select 
+    cli.nome as cliente, 
+    ped.id as pedido,
+    SUM(pei.quantidade * pei.valor_unitario) as vl_total,
+    AVG(pei.quantidade * pei.valor_unitario) as vl_medio,
+    COUNT(pei.fkpedido) as qtde
+from cliente cli
+inner join pedido ped on ped.fkcliente = cli.id
+inner join pedido_item pei on pei.fkpedido = ped.id
+where (pei.quantidade*pei.valor_unitario) > (select avg(preco_unitario) from produto)
+group by cli.nome, ped.id;
+
+select * from produto;
+update produto set preco_unitario = 700 where id = 4;
+
+
+-- update com inner join (hmmm interessante...)
+update pedido_item pei
+inner join produto pro on pro.id = pei.fkproduto
+set pei.valor_unitario = pro.preco_unitario;
+
+/*
+desafioo
+*/
+
+select 
+    cli.nome as nome_cliente, 
+    ped.id as numero_pedido,
+    SUM(pei.quantidade * pei.valor_unitario) as valor_total,
+    AVG(pei.quantidade * pei.valor_unitario) as valor_medio,
+    COUNT(pei.fkpedido) as qtde,
+    aqui
+from cliente cli
+inner join pedido ped on ped.fkcliente = cli.id
+inner join pedido_item pei on pei.fkpedido = ped.id
+group by cli.nome, ped.id
+having aqui;
+
+select AVG(pei.quantidade * pei.valor_unitario) as x from pedido_item pei;
+
+
+-- select @@sql_mode;
+
+-- ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+
+-- Incluir a restrição na variável sql_mode
+
+-- SET sql_mode = concat('ONLY_FULL_GROUP_BY, ',@@sql_mode);
+
+-- Retirar a restrição na variável sql_mode
