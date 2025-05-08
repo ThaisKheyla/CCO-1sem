@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Vetor - One Piece</title>
+</head>
+
+<body>
+    <!--a) Tenha um campo "Cadastrar Estoque de Comidas" e um botão "Cadastrar";
+        b) Ao clicar no botão, a comida digitada no campo deve ser adicionada a 
+        uma lista (que não aparece para o usuário)-->
+    Cadastrar estoque de comidas:
+    <input type="text" id="inp_comidas" placeholder="Ex: Melancia">
+    <button onclick="iniciar()">Cadastrar</button>
+    <br>
+    <br>
+    pesquisar comida:
+    <input type="text" id="inp_pesquisar" placeholder="Ex: Melancia">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <br>
+    <br>
+    _________________________________________________________________
+    <br>
+    <br>
+    Digite o nome atual da comida:
+    <input type="text" id="inp_nomeAtual" placeholder="Ex: Melão">
+    <br>
+    <br>
+    Digite novo nome da comida:
+    <input type="text" id="inp_alterarNome" placeholder="Ex: Melãozinho">
+    <br>
+    <br>
+    <button onclick="alterarNome()">Alterar nome</button>
+    <br>
+    _________________________________________________________________
+    <br>
+    <br>
+
+    Insira o nome da comida que deseja remover:
+    <input type="text" id="inp_removerComida" placeholder="Ex: Melão">
+    <br>
+    <br>
+    <button onclick="removerComida()">Remover comida</button>
+    <br>
+    _________________________________________________________________
+    <br>
+    <br>
+
+
+
+    <button onclick="verificar()">Verificar quantidade</button>
+    <button onclick="exibir()">Exibir estoque</button>
+    <br>
+    <br>
+
+    <div id="resultado"></div>
+
+</body>
+<script>
+    listaComidas = [];
+
+    function iniciar() {
+
+        var comida = inp_comidas.value;
+        console.log(listaComidas)
+        if (comida == "") {
+            resultado.innerHTML = `Preencha o campo para cadastrar uma comida`;
+        } else {
+            listaComidas.push(comida);
+            resultado.innerHTML = `Comida ${comida} cadastrada com sucesso!`;
+        }
+    }
+
+    function verificar() {
+        var quantidade = listaComidas.length;
+        if (quantidade == 0) {
+        resultado.innerHTML = `O Luffy não vai conseguir comer nada assim`;
+        }
+        else if(quantidade < 3){
+        resultado.innerHTML = `Desse jeito, o Luffy devora até o navio`;
+        }
+        else if(quantidade >= 3 && quantidade <= 7){
+        resultado.innerHTML = `O comilão do Luffy não vai deixar sobrar nenhuma comida`;
+
+        }
+        else if(quantidade >= 8 && quantidade <= 10){
+        resultado.innerHTML = `Assim, talvez sobre um pouco para a tripulação`;
+
+        } 
+        else{
+        resultado.innerHTML = `Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami!`;
+        }
+    }
+    function pesquisar(){
+    var comidaPesquisada = inp_pesquisar.value;
+    var quantidade = 0;
+
+        for(var i = 0; i < listaComidas.length; i++){
+            if(listaComidas[i] == comidaPesquisada){
+                quantidade++;
+            }
+        }
+
+    if(quantidade > 0){
+            resultado.innerHTML = `Temos a comida ${comidaPesquisada} e há ${quantidade} unidade(s) dela`;
+    }
+    else{
+        resultado.innerHTML = `Alguém vai ter que comprar ${comidaPesquisada}, tá fazendo falta...`;
+        }
+    
+    }
+    /*
+    b) Tenha um botão "Exibir Estoque":
+    Ao clicar nele exiba na tela todas as comidas cadastradas no estoque e a quantidade que tem de cada comida, conforme o exemplo abaixo:
+            
+    - Arroz de Polvo (5 unidades)
+    - Ceviche de frutos do mar (1 unidade)
+    */
+    /*ARRUMAAAAAAAAAAAAAAAAAR :,( */
+
+    function exibir(){
+    var exibir = "";
+
+    for(var i = 0;i < listaComidas.length; i++){
+        if(i == listaComidas.length - 1){
+            exibir += `- ${listaComidas[i]} (${i} unidade)`;
+        }
+        else{
+            exibir += `- ${listaComidas[i]} (${i} unidade)<br>`;
+        }
+        }
+
+        resultado.innerHTML = exibir;
+        }
+
+
+    function alterarNome(){
+        /*
+        a) Alterar Nome de Comida:
+
+        Crie dois campos de texto:
+        Um para o nome atual da comida;
+        Outro para o novo nome da comida;
+        E adicione um botão chamado "Alterar Nome".
+        Funcionalidade ao clicar no botão:
+        Verifique se o nome atual está presente na lista:
+        Se estiver, altere todas as ocorrências do nome atual para o novo nome e exiba:
+        "A comida 'nome antigo' foi alterada para 'nome novo'".
+        Se não estiver, exiba:
+        "A comida 'nome antigo' não foi encontrada no estoque."
+
+
+        */
+
+        var nomeAtual = inp_nomeAtual.value;
+        var novoNome = inp_alterarNome.value;
+
+        for(var i = 0; i < listaComidas.length; i++){
+        if(listaComidas[i] == nomeAtual){
+            listaComidas[i] = novoNome;
+        }
+        }
+        resultado.innerHTML = `A comida ${nomeAtual} alterada para ${novoNome}`
+        console.log(listaComidas)
+        }
+
+        function removerComida(){
+
+        /*
+        b) Deletar Comida do Estoque:
+
+        Crie um campo de texto para o usuário digitar o nome da comida que deseja deletar e um botão chamado "Remover Comida".
+        Funcionalidade ao clicar no botão:
+        Verifique se a comida existe na lista.
+        Se existir, remova todas as ocorrências da comida informada e exiba:
+        "A comida 'nome da comida' foi removida do estoque."
+        Se não existir, exiba:
+        "A comida 'nome da comida' não está no estoque."
+        */
+
+       var comidaRemover = inp_removerComida.value;
+       var quantidade = 0;
+        for(var i = 0; i < listaComidas.length; i++){
+            if(listaComidas[i] == comidaRemover){
+                quantidade++;
+                listaComidas.splice(i,1);
+                i--;
+            }
+        
+
+        }
+        if(quantidade > 0){
+            resultado.innerHTML = `A comida ${comidaRemover} foi removida do estoque`;
+        }
+        else{
+            resultado.innerHTML = `A comida ${comidaRemover} não está no estoque`;
+        }
+        console.log(listaComidas)
+        }
+
+</script>
+
+</html>
